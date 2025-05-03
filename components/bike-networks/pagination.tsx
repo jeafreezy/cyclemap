@@ -1,7 +1,4 @@
 "use client";
-import { SEARCH_PARAMS_KEYS } from "@/configs";
-import useQueryParam from "@/hooks/use-query-params";
-import { BikeNetworks } from "@/types";
 import {
   Pagination,
   PaginationContent,
@@ -12,23 +9,23 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination";
 
+type PaginatorProps = {
+  totalItems: number;
+  itemsPerPage: number;
+  variant?: "primary" | "secondary";
+  currentPage: number;
+  handlePageChange: (page: number) => void;
+};
+
 export const Paginator = ({
-  bikeNetworks,
-  totalBikeNetworks,
-}: {
-  bikeNetworks: BikeNetworks;
-  totalBikeNetworks: number;
-}) => {
-  const { queryParam: currentPage, handleParamChange } = useQueryParam(
-    SEARCH_PARAMS_KEYS.PAGE,
-  );
-
-  const totalPages = Math.ceil(totalBikeNetworks / bikeNetworks.length);
-  const currentPageNumber = parseInt(currentPage || "1", 10);
-
-  const handlePageChange = (page: number) => {
-    handleParamChange(page.toString());
-  };
+  totalItems,
+  itemsPerPage,
+  variant = "primary",
+  currentPage,
+  handlePageChange,
+}: PaginatorProps) => {
+  const currentPageNumber = currentPage;
+  const totalPages = Math.ceil(totalItems / itemsPerPage);
 
   const getPageRange = () => {
     const start = Math.max(1, currentPageNumber - 1);
@@ -49,14 +46,24 @@ export const Paginator = ({
                 handlePageChange(currentPageNumber - 1);
               }
             }}
-            className="font-semibold  text-primary cursor-pointer"
+            className={`font-semibold text-primary hover:text-primary cursor-pointer ${variant === "primary" ? "text-primary" : "text-base-white"}`}
           />
         </PaginationItem>
+
         {pageRange.map((page) => (
           <PaginationItem key={page}>
             <PaginationLink
               isActive={page === currentPageNumber}
-              className={`${page === currentPageNumber ? "bg-accent border-toreabay-200" : ""} cursor-pointer text-primary font-semibold hover:text-primary`}
+              className={`
+                cursor-pointer font-semibold
+                ${
+                  page === currentPageNumber
+                    ? "bg-accent border-toreabay-200 text-primary hover:text-primary"
+                    : variant === "secondary"
+                      ? "text-base-white hover:text-primary"
+                      : "text-primary hover:text-primary"
+                }
+              `}
               onClick={(e) => {
                 e.preventDefault();
                 handlePageChange(page);
@@ -66,9 +73,13 @@ export const Paginator = ({
             </PaginationLink>
           </PaginationItem>
         ))}
-        <PaginationItem>
-          <PaginationEllipsis />
-        </PaginationItem>
+
+        {currentPageNumber < totalPages - 1 && (
+          <PaginationItem>
+            <PaginationEllipsis />
+          </PaginationItem>
+        )}
+
         <PaginationItem>
           <PaginationNext
             onClick={(e) => {
@@ -77,7 +88,7 @@ export const Paginator = ({
                 handlePageChange(currentPageNumber + 1);
               }
             }}
-            className="font-semibold  text-primary hover:text-primary cursor-pointer"
+            className={`font-semibold text-primary hover:text-primary cursor-pointer ${variant === "primary" ? "text-primary" : "text-base-white"}`}
           />
         </PaginationItem>
       </PaginationContent>

@@ -5,6 +5,7 @@ import { BikeNetwork } from "@/types";
 import { APPLICATION_ROUTES } from "@/configs";
 import { BikeNetworkCity } from "@/components/bike-networks/network-city";
 import { BikeNetworkCompany } from "@/components/bike-networks/network-company";
+import { Button } from "@/components/ui/button";
 
 export const BikeNetworkCard: React.FC<{ network: BikeNetwork }> = ({
   network,
@@ -20,12 +21,16 @@ export const BikeNetworkCard: React.FC<{ network: BikeNetwork }> = ({
         <BikeNetworkCity networkLocation={network.location} />
         <div className="flex items-center gap-x-3 justify-between w-full">
           <BikeNetworkCompany network={network} />
-          <button className="flex items-center cursor-pointer bg-white rounded-full px-4 py-2 gap-x-2 min-w-[7rem] sm:w-28 justify-end">
+          <Button
+            variant="ghost"
+            size="icon"
+            className="flex items-center cursor-pointer bg-white rounded-full px-4 py-2 gap-x-2 min-w-[7rem] sm:w-28 justify-end hover:bg-white"
+          >
             <span className="overflow-hidden text-grenadier-500 whitespace-nowrap max-w-0 group-hover:max-w-16 transition-all duration-300">
               Details
             </span>
             <ArrowRight className="size-4 text-grenadier-400 transition-transform group-hover:-translate-x-1" />
-          </button>
+          </Button>
         </div>
       </div>
     </Link>

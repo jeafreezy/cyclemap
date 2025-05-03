@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import { GEOLOCATION_ZOOM_LEVEL } from "@/configs";
 import { useMap } from "@/context";
 import { LocateIcon } from "lucide-react";
@@ -38,13 +39,15 @@ export const GeolocationControl = () => {
 
   return (
     <div className="absolute top-8 left-8 z-10">
-      <button
-        className="bg-primary py-2 px-4 rounded-full shadow-md flex items-center gap-x-2 cursor-pointer text-base-white"
+      <Button
+        variant="ghost"
+        size="sm"
+        className="bg-primary py-2 px-4 rounded-full shadow-md flex items-center gap-x-2 cursor-pointer text-base-white hover:text-primary"
         onClick={handleGeolocation}
       >
         <LocateIcon className="size-4" />
         <span className="font-bold text-sm">Near me</span>
-      </button>
+      </Button>
     </div>
   );
 };

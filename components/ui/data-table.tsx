@@ -47,10 +47,13 @@ const DataTable = <TData, TValue>({
   });
 
   return (
-    <Table>
-      <TableHeader>
+    <Table className="w-full">
+      <TableHeader className="sticky top-0 z-20 bg-toreabay-800">
         {table.getHeaderGroups().map((headerGroup) => (
-          <TableRow key={headerGroup.id}>
+          <TableRow
+            key={headerGroup.id}
+            className="hover:bg-transparent border-b"
+          >
             {headerGroup.headers.map((header) => {
               return (
                 <TableHead key={header.id} className="text-base-white">
@@ -73,9 +76,10 @@ const DataTable = <TData, TValue>({
               key={row.id}
               data-state={row.getIsSelected() && "selected"}
               onClick={() => onRowClick?.(row.original)}
+              className="border-dashed border-[rgba(255,255,255,0.5)] hover:bg-[rgba(255,255,255,0.1)] group"
             >
               {row.getVisibleCells().map((cell) => (
-                <TableCell key={cell.id}>
+                <TableCell key={cell.id} className="py-6 px-2">
                   {flexRender(cell.column.columnDef.cell, cell.getContext())}
                 </TableCell>
               ))}

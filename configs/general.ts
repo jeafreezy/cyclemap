@@ -62,6 +62,11 @@ export const SEARCH_PARAMS_KEYS = {
 export const BIKE_NETWORKS_PAGE_SIZE = 10;
 
 /**
+ * The maximum number of bike networks stations to display on the sizebar.
+ */
+export const BIKE_NETWORK_STATIONS_PAGE_SIZE = 15;
+
+/**
  * The application routes.
  */
 export const APPLICATION_ROUTES = {

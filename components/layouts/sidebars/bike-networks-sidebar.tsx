@@ -1,3 +1,5 @@
+"use client";
+
 import {
   CountryFilter,
   SearchBarFilter,
@@ -5,8 +7,9 @@ import {
 import { Header } from "@/components/layouts/header";
 import { BikeNetworks } from "@/types";
 import { BikeNetworkCard } from "@/components/bike-networks/network-card";
-import { BIKE_NETWORKS_PAGE_SIZE } from "@/configs";
+import { BIKE_NETWORKS_PAGE_SIZE, SEARCH_PARAMS_KEYS } from "@/configs";
 import { Paginator } from "@/components/bike-networks/pagination";
+import useQueryParam from "@/hooks/use-query-params";
 
 export const BikeNetworksSidebar = ({
   bikeNetworks,
@@ -15,6 +18,10 @@ export const BikeNetworksSidebar = ({
   bikeNetworks: BikeNetworks;
   totalBikeNetworks: number;
 }) => {
+  const { queryParam: page, handleParamChange } = useQueryParam(
+    SEARCH_PARAMS_KEYS.PAGE,
+  );
+  const pageNumber = parseInt(page) || 1;
   return (
     <aside className="h-screen flex flex-col overflow-y-auto no-scrollbar">
       <div className="p-6">
@@ -40,8 +47,12 @@ export const BikeNetworksSidebar = ({
         </div>
         {totalBikeNetworks > BIKE_NETWORKS_PAGE_SIZE ? (
           <Paginator
-            bikeNetworks={bikeNetworks}
-            totalBikeNetworks={totalBikeNetworks}
+            totalItems={totalBikeNetworks}
+            itemsPerPage={BIKE_NETWORKS_PAGE_SIZE}
+            currentPage={pageNumber}
+            handlePageChange={(page: number) => {
+              handleParamChange(page.toString());
+            }}
           />
         ) : null}
       </div>

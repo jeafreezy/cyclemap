@@ -1,64 +1,62 @@
 "use client";
 
-import { BikeNetworkDetail } from "@/types";
-import { ArrowLeft } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { useRouter, useSearchParams } from "next/navigation";
-import { Paginator } from "@/components/bike-networks/pagination";
-import { BikeNetworkCity } from "@/components/bike-networks/network-city";
-import { BikeNetworkCompany } from "@/components/bike-networks/network-company";
-import { BIKE_NETWORKS_PAGE_SIZE, SEARCH_PARAMS_KEYS } from "@/configs";
-import { useMemo } from "react";
+import { BikeNetworkDetail, Station } from "@/types";
+import { BIKE_NETWORK_STATIONS_PAGE_SIZE, SEARCH_PARAMS_KEYS } from "@/configs";
 import { BikeNetworkStationsTable } from "@/components/bike-networks/stations-table";
+import { BikeNetworkHero } from "@/components/bike-networks/bike-network-hero";
+import { motion } from "framer-motion";
+import { usePaginator } from "@/hooks/use-pagination";
+import { Paginator } from "@/components/bike-networks/pagination";
+import useQueryParam from "@/hooks/use-query-params";
 
 export function BikeNetworkDetailSidebar({
   network,
 }: {
   network: BikeNetworkDetail;
 }) {
-  const router = useRouter();
+  const { queryParam: page, handleParamChange } = useQueryParam(
+    SEARCH_PARAMS_KEYS.PAGE,
+  );
+  const pageNumber = parseInt(page) || 1;
+  const paginatedBikeNetworkStations = usePaginator(
+    network.stations,
+    pageNumber,
+    BIKE_NETWORK_STATIONS_PAGE_SIZE,
+  ) as Station[];
 
-  console.log("BikeNetworkDetailPageWrapper", network);
-
-  const searchParams = useSearchParams();
-
-  const page = parseInt(searchParams.get(SEARCH_PARAMS_KEYS.PAGE) || "1", 10);
-
-  const paginatedBikeNetworkStations = useMemo(() => {
-    const start = (page - 1) * BIKE_NETWORKS_PAGE_SIZE;
-    const end = start + BIKE_NETWORKS_PAGE_SIZE;
-    return network.stations.slice(start, end);
-  }, [network.stations, page]);
-
-  console.log(paginatedBikeNetworkStations);
   return (
-    <aside className="h-screen w-full bg-gradient-to-b from-indigo-600 to-indigo-700 text-white p-4 flex flex-col no-scrollbar">
-      {/* Header */}
-      <div className="flex items-center gap-2 mb-4">
-        <Button variant="ghost" size="icon" onClick={() => router.back()}>
-          <ArrowLeft className="text-white" />
-        </Button>
-        <h2 className="text-xl font-bold">{network.name}</h2>
-      </div>
-
-      {/* Location and companies */}
-      <BikeNetworkCity networkLocation={network.location} isNetworkDetailPage />
-      <BikeNetworkCompany network={network} isNetworkDetailPage />
-      {/* Station Table */}
-      <div className="text-sm font-medium mb-2">
-        All <span className="font-bold">{network.stations.length}</span>{" "}
-        stations
-      </div>
-      <div className="flex-1 overflow-auto no-scrollbar">
-        <BikeNetworkStationsTable stations={paginatedBikeNetworkStations} />
-      </div>
-
-      {/* Pagination */}
-      {/* <Paginator
-        totalBikeNetworks={network.stations.length}
-        stations={network.stations}
-        isNetworkDetailPage
-      /> */}
-    </aside>
+    <div className="relative">
+      <motion.aside
+        key={network.id}
+        className="absolute top-0 right-0 h-screen w-full bg-toreabay-800 text-white flex flex-col  overflow-y-auto no-scrollbar "
+        initial={{ x: "100%", opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        exit={{ x: "100%", opacity: 0 }}
+        transition={{ type: "tween", duration: 0.4 }}
+      >
+        <BikeNetworkHero network={network} />
+        <section className="px-10 flex flex-col space-y-3">
+          <div className="text-sm flex items-center gap-x-2 text-base-white">
+            All
+            <span className="text-grenadier-400 border border-grenadier-400 px-1.5 py-1 inline-flex items-center justify-center rounded whitespace-nowrap">
+              {network.stations.length}
+            </span>
+            stations
+          </div>
+          <BikeNetworkStationsTable stations={paginatedBikeNetworkStations} />
+          {network.stations.length > BIKE_NETWORK_STATIONS_PAGE_SIZE ? (
+            <Paginator
+              totalItems={network.stations.length}
+              itemsPerPage={BIKE_NETWORK_STATIONS_PAGE_SIZE}
+              variant="secondary"
+              currentPage={pageNumber}
+              handlePageChange={(page: number) =>
+                handleParamChange(page.toString())
+              }
+            />
+          ) : null}
+        </section>
+      </motion.aside>
+    </div>
   );
 }

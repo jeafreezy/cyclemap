@@ -1,1 +1,1 @@
-export { default as BikeDetailBackgroundImage } from "./bike-detail-background.jpg";
+export { default as BikeNetworkDetailHeroBackgroundImage } from "./bike-detail-background.jpg";

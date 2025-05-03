@@ -4,6 +4,7 @@ import { MAX_ZOOM_LEVEL, MIN_ZOOM_LEVEL } from "@/configs";
 import { Plus, Minus } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useMap } from "@/context";
+import { Button } from "@/components/ui/button";
 
 export const ZoomControl = () => {
   const map = useMap();
@@ -60,12 +61,14 @@ const ZoomControlButton = ({
   icon: React.ReactNode;
 }) => {
   return (
-    <button
-      className={`text-primary w-full flex items-center justify-center h-full ${disabled ? "opacity-50 cursor-not-allowed" : "cursor-pointer"}`}
+    <Button
+      variant="ghost"
+      size="sm"
+      className={`text-primary w-full flex items-center justify-center hover:text-primary h-full ${disabled ? "opacity-50 cursor-not-allowed" : "cursor-pointer"}`}
       onClick={onClick}
       disabled={disabled}
     >
       {icon}
-    </button>
+    </Button>
   );
 };

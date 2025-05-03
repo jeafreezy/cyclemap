@@ -1,13 +1,23 @@
 import { MetadataRoute } from "next";
+import { bikeNetworksService } from "@/services";
+import { APPLICATION_ROUTES } from "@/configs";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const domain = process.env.NEXT_PUBLIC_SITE_URL;
+  const networks = await bikeNetworksService.getBikeNetworks();
+
   return [
     {
-      url: "",
+      url: `${domain}`,
       lastModified: new Date(),
-      changeFrequency: "yearly",
+      changeFrequency: "yearly" as const,
       priority: 1,
     },
-    // general for each bike network.
+    ...networks.map((network) => ({
+      url: `${domain}${APPLICATION_ROUTES.NETWORK_DETAILS(network.id)}`,
+      lastModified: new Date(),
+      changeFrequency: "weekly" as const,
+      priority: 0.7,
+    })),
   ];
 }

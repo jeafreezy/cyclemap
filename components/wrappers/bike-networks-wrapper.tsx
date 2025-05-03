@@ -5,7 +5,8 @@ import { useSearchParams } from "next/navigation";
 import { BIKE_NETWORKS_PAGE_SIZE, SEARCH_PARAMS_KEYS } from "@/configs";
 import { useMemo } from "react";
 import { AppLayout } from "@/components/layouts/app-layout";
-import { BikeNetworksLayer } from "../map/layers/bike-networks-layer";
+import { BikeNetworksLayer } from "@/components/map/layers/bike-networks-layer";
+import { usePaginator } from "@/hooks/use-pagination";
 
 export const BikeNetworksPageWrapper = ({
   bikeNetworks,
@@ -33,12 +34,11 @@ export const BikeNetworksPageWrapper = ({
     });
   }, [bikeNetworks, searchQuery, country]);
 
-  const paginatedBikeNetworks = useMemo(() => {
-    const start = (page - 1) * BIKE_NETWORKS_PAGE_SIZE;
-    const end = start + BIKE_NETWORKS_PAGE_SIZE;
-    return filteredBikeNetworks.slice(start, end);
-  }, [filteredBikeNetworks, page]);
-
+  const paginatedBikeNetworks = usePaginator(
+    filteredBikeNetworks,
+    page,
+    BIKE_NETWORKS_PAGE_SIZE,
+  ) as BikeNetworks;
   return (
     <AppLayout
       sidebar={
