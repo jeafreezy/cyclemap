@@ -1,9 +1,10 @@
 import { GEOLOCATION_ZOOM_LEVEL } from "@/configs";
+import { useMap } from "@/context";
 import { LocateIcon } from "lucide-react";
-import { Map } from "mapbox-gl";
 import { toast } from "sonner";
 
-export const GeolocationControl = ({ map }: { map: Map }) => {
+export const GeolocationControl = () => {
+  const map = useMap();
   const handleGeolocation = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(

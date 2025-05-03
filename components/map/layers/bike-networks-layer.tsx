@@ -4,18 +4,19 @@ import {
   BIKE_NETWORK_POINTS_LAYER_ID,
   BIKE_NETWORK_POINTS_SOURCE_ID,
 } from "@/configs";
-import { BikeNetworks, GeoJSONFeatureCollection } from "@/types";
-import { GeoJSONSource, Map } from "mapbox-gl";
+import { useMap } from "@/context";
+import { BikeNetworks } from "@/types";
+import { AllGeoJSON } from "@turf/helpers";
+import { GeoJSONSource } from "mapbox-gl";
 import { useEffect, useMemo } from "react";
 
 export const BikeNetworksLayer = ({
-  map,
   bikeNetworks,
 }: {
-  map: Map;
   bikeNetworks: BikeNetworks;
 }) => {
-  const bikeNetworkFeatureCollection: GeoJSONFeatureCollection = useMemo(
+  const map = useMap();
+  const bikeNetworkFeatureCollection: AllGeoJSON = useMemo(
     () => ({
       type: "FeatureCollection",
       features: bikeNetworks.map((network) => ({
@@ -52,7 +53,15 @@ export const BikeNetworksLayer = ({
           source: BIKE_NETWORK_POINTS_SOURCE_ID,
           filter: ["has", "point_count"],
           paint: {
-            "circle-radius": ["step", ["get", "point_count"], 15, 10, 20, 50, 25],
+            "circle-radius": [
+              "step",
+              ["get", "point_count"],
+              15,
+              10,
+              20,
+              50,
+              25,
+            ],
             "circle-color": "#f37b44",
           },
         });
@@ -96,6 +105,7 @@ export const BikeNetworksLayer = ({
     }
 
     return () => {
+      if (!map || !map.isStyleLoaded()) return;
       if (map.getLayer(`${BIKE_NETWORK_POINTS_LAYER_ID}-clusters`)) {
         map.removeLayer(`${BIKE_NETWORK_POINTS_LAYER_ID}-clusters`);
       }
@@ -110,7 +120,6 @@ export const BikeNetworksLayer = ({
       }
     };
   }, [map, bikeNetworkFeatureCollection]);
-
 
   useEffect(() => {
     if (!map || !map.getSource(BIKE_NETWORK_POINTS_SOURCE_ID)) return;

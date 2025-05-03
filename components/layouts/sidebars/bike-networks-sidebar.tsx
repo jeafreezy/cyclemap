@@ -1,23 +1,20 @@
-
 import {
   CountryFilter,
-  PaginationFilter,
   SearchBarFilter,
 } from "@/components/bike-networks/filters";
 import { Header } from "@/components/layouts/header";
 import { BikeNetworks } from "@/types";
 import { BikeNetworkCard } from "@/components/bike-networks/network-card";
 import { BIKE_NETWORKS_PAGE_SIZE } from "@/configs";
+import { Paginator } from "@/components/bike-networks/pagination";
 
-
-export const Sidebar = ({
+export const BikeNetworksSidebar = ({
   bikeNetworks,
   totalBikeNetworks,
 }: {
   bikeNetworks: BikeNetworks;
   totalBikeNetworks: number;
 }) => {
-
   return (
     <aside className="h-screen flex flex-col overflow-y-auto no-scrollbar">
       <div className="p-6">
@@ -41,13 +38,12 @@ export const Sidebar = ({
             </div>
           )}
         </div>
-        {totalBikeNetworks > BIKE_NETWORKS_PAGE_SIZE
-          ?
-          <PaginationFilter
+        {totalBikeNetworks > BIKE_NETWORKS_PAGE_SIZE ? (
+          <Paginator
             bikeNetworks={bikeNetworks}
             totalBikeNetworks={totalBikeNetworks}
           />
-          : null}
+        ) : null}
       </div>
     </aside>
   );

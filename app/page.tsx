@@ -1,7 +1,7 @@
-import { AppLayout } from "@/components/layouts/app-layout";
+import { BikeNetworksPageWrapper } from "@/components/wrappers/bike-networks-wrapper";
 import { bikeNetworksService } from "@/services";
 
-export default async function HomePage() {
+export default async function BikeNetworksPage() {
   const bikeNetworks = await bikeNetworksService.getBikeNetworks();
-  return <AppLayout initialBikeNetworks={bikeNetworks} />;
+  return <BikeNetworksPageWrapper bikeNetworks={bikeNetworks} />;
 }

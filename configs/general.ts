@@ -40,6 +40,16 @@ export const BIKE_NETWORK_POINTS_SOURCE_ID = "bike-network-points";
  */
 export const BIKE_NETWORK_POINTS_LAYER_ID = "bike-network-points-layer";
 
+/**
+ * The source ID for the bike network stations points.
+ */
+export const BIKE_NETWORK_STATIONS_SOURCE_ID = "bike-network-stations";
+
+/**
+ * The source ID for the bike network stations points layer.
+ */
+export const BIKE_NETWORK_STATIONS_LAYER_ID = "bike-network-stations-layer";
+
 export const SEARCH_PARAMS_KEYS = {
   COUNTRY: "country",
   SEARCH: "search",
@@ -50,3 +60,10 @@ export const SEARCH_PARAMS_KEYS = {
  * The maximum number of bike networks to display on the sizebar.
  */
 export const BIKE_NETWORKS_PAGE_SIZE = 10;
+
+/**
+ * The application routes.
+ */
+export const APPLICATION_ROUTES = {
+  NETWORK_DETAILS: (id: string) => `/network/${id}`,
+};

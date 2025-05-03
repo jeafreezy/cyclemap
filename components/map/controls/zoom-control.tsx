@@ -1,11 +1,12 @@
 "use client";
 
 import { MAX_ZOOM_LEVEL, MIN_ZOOM_LEVEL } from "@/configs";
-import { Map } from "mapbox-gl";
 import { Plus, Minus } from "lucide-react";
 import { useEffect, useState } from "react";
+import { useMap } from "@/context";
 
-export const ZoomControl = ({ map }: { map: Map }) => {
+export const ZoomControl = () => {
+  const map = useMap();
   const [zoomLevel, setZoomLevel] = useState<number>(map.getZoom());
 
   useEffect(() => {

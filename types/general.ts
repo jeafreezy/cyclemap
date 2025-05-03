@@ -1,14 +1,15 @@
+export type BikeNetworkLocation = {
+  city: string;
+  country: string;
+  latitude: number;
+  longitude: number;
+};
 export type BikeNetwork = {
   id: string;
   name: string;
   company: string[];
   href: string;
-  location: {
-    city: string;
-    country: string;
-    latitude: number;
-    longitude: number;
-  };
+  location: BikeNetworkLocation;
   system?: string;
   source?: string;
   gbfs_href?: string;
@@ -47,20 +48,4 @@ export type BikeNetworkDetail = {
   company: string[];
   system?: string;
   stations: Station[];
-};
-
-type GeoJSONFeature = {
-  type: "Feature";
-  geometry: {
-    type: "Point" | "LineString" | "Polygon";
-    coordinates: number[] | number[][];
-  };
-  properties: {
-    [key: string]: unknown;
-  };
-  id?: string;
-};
-export type GeoJSONFeatureCollection = {
-  type: "FeatureCollection";
-  features: GeoJSONFeature[];
 };
