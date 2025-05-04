@@ -12,7 +12,7 @@ const poppins = Poppins({
   /**
    * Normal = 400.
    * Bold = 700.
-   * Based on the Figma design system, most of the text is `400` (normal),  and the ones with bolds are `500` (medium), `600` (semi bold) and `700` (bold), so i'm loading only those three.
+   * Based on the Figma design system, most of the text is `400` (normal),  and the others are `500` (medium), `600` (semi bold) and `700` (bold), so i'm loading only those four.
    */
   weight: ["400", "500", "600", "700"],
   subsets: ["latin"],
