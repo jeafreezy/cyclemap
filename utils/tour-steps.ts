@@ -15,7 +15,7 @@ export const TOUR_IDS = {
 };
 
 /**
- * The steps for the guided tour of the application.
+ *  The steps for the guided tour of the home page.
  */
 export const HOME_TOUR_STEPS = [
   {
@@ -49,6 +49,9 @@ export const HOME_TOUR_STEPS = [
   },
 ];
 
+/**
+ * The steps for the guided tour of the bike network details page.
+ */
 export const DETAIL_TOUR_STEPS = [
   {
     selector: `#${TOUR_IDS.TABLE_SORTER}`,

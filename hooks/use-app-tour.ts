@@ -5,6 +5,10 @@ import { useTour } from "@reactour/tour";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 
+/**
+ *  Custom hook to manage the application tour.
+ * @returns  {object} - An object containing the state and functions to control the tour.
+ */
 export const useAppTour = () => {
   const [openTourDialog, setOpenTourDialog] = useState<boolean>(false);
 

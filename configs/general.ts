@@ -36,7 +36,7 @@ export const STARTING_CENTER = [0, 0];
 export const BIKE_NETWORK_POINTS_SOURCE_ID = "bike-network-points";
 
 /**
- * The source ID for the bike network points layer.
+ * The layer ID for the bike network points layer.
  */
 export const BIKE_NETWORK_POINTS_LAYER_ID = "bike-network-points-layer";
 
@@ -46,7 +46,7 @@ export const BIKE_NETWORK_POINTS_LAYER_ID = "bike-network-points-layer";
 export const BIKE_NETWORK_STATIONS_SOURCE_ID = "bike-network-stations";
 
 /**
- * The source ID for the bike network stations points layer.
+ * The layer ID for the bike network stations points layer.
  */
 export const BIKE_NETWORK_STATIONS_LAYER_ID = "bike-network-stations-layer";
 
