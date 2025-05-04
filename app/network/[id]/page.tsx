@@ -4,15 +4,10 @@ import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import { APPLICATION_ROUTES } from "@/configs";
 
-
-
 /**
  * Revalidation for ISR.
  */
-export const revalidate = parseInt(
-  process.env.NEXT_PUBLIC_BIKE_DEDAIL_PAGE_REVALIDATE_TIME_IN_SECONDS || "0",
-  10,
-);
+export const revalidate = 3600; // 1 hour
 
 export async function generateStaticParams() {
   const networks = await bikeNetworksService.getBikeNetworks();
@@ -22,7 +17,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ id: string }>;
+  params: { id: string };
 }): Promise<Metadata> {
   try {
     const { id } = await params;
@@ -53,7 +48,7 @@ export default async function BikeNetworkDetailsPage({
 }: {
   params: { id: string };
 }) {
-  const { id } = await params;
+  const { id } = params;
   try {
     const bikeNetworkDetail = await bikeNetworksService.getBikeNetworkById(id);
     return <BikeNetworkDetailPageWrapper bikeNetwork={bikeNetworkDetail} />;
