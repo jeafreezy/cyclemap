@@ -5,15 +5,8 @@ import { Metadata } from "next";
 import { APPLICATION_ROUTES } from "@/configs";
 import { Suspense } from "react";
 import { SuspenseFallback } from "@/components/suspense-fallback";
-/**
- * Revalidation for ISR.
- */
-export const revalidate = 3600; // 1 hour
 
-export async function generateStaticParams() {
-  const networks = await bikeNetworksService.getBikeNetworks();
-  return networks.map((network) => ({ id: network.id }));
-}
+
 
 export async function generateMetadata({
   params,
