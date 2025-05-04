@@ -5,20 +5,14 @@ import { Metadata } from "next";
 import { APPLICATION_ROUTES } from "@/configs";
 
 
-const revalidateTime = process.env.NODE_ENV === "production"
-  ? parseInt(
-    process.env.NEXT_PUBLIC_BIKE_DEDAIL_PAGE_REVALIDATE_TIME_IN_SECONDS ||
-    "0",
-    10,
-  )
-  : 0;
-
 
 /**
  * Revalidation for ISR.
  */
-export const revalidate = revalidateTime
-
+export const revalidate = parseInt(
+  process.env.NEXT_PUBLIC_BIKE_DEDAIL_PAGE_REVALIDATE_TIME_IN_SECONDS || "0",
+  10,
+);
 
 export async function generateStaticParams() {
   const networks = await bikeNetworksService.getBikeNetworks();
@@ -28,7 +22,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }): Promise<Metadata> {
   try {
     const { id } = await params;
