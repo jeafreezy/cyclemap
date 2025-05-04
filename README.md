@@ -36,9 +36,8 @@ This React SPA lets users explore bicycle networks worldwide through a rich, acc
 
 - Mapbox GL shows:
   - Bike networks on the main page. The bike networks are clustered for performant rendering.
-  - Stations on the detail page.
-- Zoom controls.
-- Geolocation control.
+  - Stations on the detail page with popups when clicked.
+- Zoom and Geolocation controls.
 
 ### Filtering & Search
 
