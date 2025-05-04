@@ -60,7 +60,7 @@ export const useAppTour = () => {
         setOpenTourDialog(true);
       }
       setLocalStorageValue(SITE_TOUR_LOCAL_STORAGE_KEY, "false");
-    }, 2000);
+    }, 5000);
 
     return () => clearTimeout(timeoutId);
   }, [

@@ -56,11 +56,12 @@ export const Paginator = ({
               isActive={page === currentPageNumber}
               className={`
                 cursor-pointer font-semibold
-                ${page === currentPageNumber
-                  ? "bg-accent border-toreabay-200 text-primary hover:text-primary"
-                  : variant === "secondary"
-                    ? "text-base-white hover:text-primary"
-                    : "text-primary hover:text-primary"
+                ${
+                  page === currentPageNumber
+                    ? "bg-accent border-toreabay-200 text-primary hover:text-primary"
+                    : variant === "secondary"
+                      ? "text-base-white hover:text-primary"
+                      : "text-primary hover:text-primary"
                 }
               `}
               onClick={(e) => {
