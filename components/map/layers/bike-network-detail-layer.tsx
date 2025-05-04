@@ -3,7 +3,7 @@
 import {
   BIKE_NETWORK_STATIONS_LAYER_ID,
   BIKE_NETWORK_STATIONS_SOURCE_ID,
-  GEOLOCATION_ZOOM_LEVEL,
+  BIKE_NETWORK_STATIONS_ZOOM_LEVEL,
 } from "@/configs";
 import { useMap } from "@/context";
 import { Station } from "@/types";
@@ -75,7 +75,7 @@ export const BikeNetworkDetailLayer = ({
           source: BIKE_NETWORK_STATIONS_SOURCE_ID,
           paint: {
             "circle-radius": 7,
-            "circle-color": "#f37b44",
+            "circle-color": "#f37b44", // --grenadier-400 
           },
         });
       }
@@ -83,7 +83,7 @@ export const BikeNetworkDetailLayer = ({
       const bounds = bbox(featureCollection);
       map.fitBounds(bounds as LngLatBoundsLike, {
         padding: 20,
-        maxZoom: GEOLOCATION_ZOOM_LEVEL,
+        maxZoom: BIKE_NETWORK_STATIONS_ZOOM_LEVEL,
       });
     };
 

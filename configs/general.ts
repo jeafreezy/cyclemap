@@ -21,6 +21,12 @@ export const MAX_ZOOM_LEVEL = 22;
  * The zoom level for geolocation.
  */
 export const GEOLOCATION_ZOOM_LEVEL = 14;
+
+/**
+ * The zoom level for the bike network stations.
+ */
+export const BIKE_NETWORK_STATIONS_ZOOM_LEVEL = 14;
+
 /**
  * The minimum zoom level for the map.
  */
@@ -50,6 +56,9 @@ export const BIKE_NETWORK_STATIONS_SOURCE_ID = "bike-network-stations";
  */
 export const BIKE_NETWORK_STATIONS_LAYER_ID = "bike-network-stations-layer";
 
+/**
+ *  The search params keys for the application.
+ */
 export const SEARCH_PARAMS_KEYS = {
   COUNTRY: "country",
   SEARCH: "search",

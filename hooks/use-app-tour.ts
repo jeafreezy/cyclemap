@@ -46,7 +46,7 @@ export const useAppTour = () => {
   };
 
   /**
-   *  Open the tour dialog after 2 seconds.
+   *  Open the tour dialog after 5s.
    */
   useEffect(() => {
     const timeoutId = setTimeout(() => {
