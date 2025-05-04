@@ -108,7 +108,7 @@ Here's an overview of the folder structure:
 ├── services/ - API routes and services.
 ├── types/ - Reusable types.
 ├── utils/ - Utility functions.
-├── __tests__/ - Unit tests.
+├── **tests**/ - Unit tests.
 └── ... Other configuration files like tsconfig.json, .husky, vite.config.mts etc.
 ```
 

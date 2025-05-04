@@ -16,7 +16,11 @@ export const useQueryParam = (key: string, debounce: boolean = false) => {
   const updateQueryString = useCallback(
     (key: string, value: string) => {
       const params = new URLSearchParams(searchParams.toString());
-      params.set(key, value);
+      if (value.trim() === "") {
+        params.delete(key);
+      } else {
+        params.set(key, value);
+      }
       return params.toString();
     },
     [searchParams],
