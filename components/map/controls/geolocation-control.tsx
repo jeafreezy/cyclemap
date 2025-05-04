@@ -22,9 +22,9 @@ export const GeolocationControl = () => {
             },
           });
         },
-        (error) => {
+        () => {
           toast.error(
-            `Unable to retrieve your location. Reason: ${error.message}.`,
+            `Unable to retrieve your location. Please check your browser settings and try again.`,
           );
         },
         {

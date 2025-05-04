@@ -11,10 +11,10 @@ export const Header = () => {
         <h1 className="text-primary text-3xl leading-10 font-semibold">
           Discover bike networks
         </h1>
-        <p className="text-sm leading-5 text-zinc-500">
-          Lorem ipsum dolor sit amet consectetur. A volutpat adipiscing placerat
-          turpis magna sem tempor amet faucibus. Arcu praesent viverra
-          pellentesque nisi quam in rhoncus.
+        <p className="text-sm leading-5 text-zinc-500 max-w-lg">
+          Explore bike-sharing systems across the world with CycleMap. Find
+          networks by city or country, view their locations on the map, and plan
+          your next ride effortlessly.
         </p>
       </div>
     </header>

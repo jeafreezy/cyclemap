@@ -34,7 +34,7 @@ export const CountryFilter = () => {
           id={TOUR_IDS.COUNTRY_FILTER}
           role="combobox"
           aria-expanded={open}
-          className={`min-w-28 flex gap-x-1 text-primary justify-between rounded-full border-accent ${open && "border-primary"} text-ellipsis overflow-hidden py-6 px-3`}
+          className={`min-w-28 flex cursor-pointer hover:text-primary gap-x-1 text-primary justify-between rounded-full border-accent ${open && "border-primary"} text-ellipsis overflow-hidden py-6 px-3`}
         >
           <MapPin className="size-4 text-secondary-foreground" />
           <span className="w-full truncate">
