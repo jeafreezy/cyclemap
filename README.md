@@ -1,12 +1,8 @@
 # 🚴‍♂️ CycleMap – Bike Networks Explorer
 
-
 ![Open Graph](./public/og/opengraph-image.png)
 
-
 This React SPA lets users explore bicycle networks worldwide through a rich, accessible, and performant interface, combining server-side rendering, map integration, pagination, and search/filter functionality—all built using modern tooling and best practices.
-
-
 
 ## Table of Contents
 
@@ -84,20 +80,20 @@ Site tour powered by `reactour`, with:
 All interactive elements have:
 
 - aria-labels.
-  `shadcn/ui` is built on radix primitives (a11y friendly).
+- `shadcn/ui` is built on radix primitives (a11y friendly).
 
 ## Tech Stack
 
 - [Next.js (App Router)](https://nextjs.org/docs).
 - [TypeScript](https://www.typescriptlang.org/).
 - [Tailwind CSS](https://tailwindcss.com/) + custom tokens from the [UI](https://www.figma.com/design/0MNqMneHvxahQZ6pknjzlq/Frontend-Challenge?node-id=5110-10913&t=lPnWiIiq1Z13J7eC-0) kit.
-- [Shadcn/ui](https://ui.shadcn.com/).
+- [Shadcn UI](https://ui.shadcn.com/).
 - [Mapbox GL JS](https://docs.mapbox.com/mapbox-gl-js/api/).
 - [Reactour](https://docs.react.tours/) for guided tours.
 - [Framer motion](https://motion.dev/) for animation.
 - [Lucide/React](https://lucide.dev/icons/) for icons.
 - [Turf](https://turfjs.org/) for geometry operations (bbox specifically).
-- [Tanstack/Reacttable](https://tanstack.com/table/latest) for table.
+- [Tanstack table](https://tanstack.com/table/latest) for table.
 - [Sonner](https://sonner.emilkowal.ski/) for toast.
 - [Vitest](https://vitest.dev/) + Testing Library for unit tests.
 
@@ -114,7 +110,7 @@ Here's an overview of the folder structure:
 ├── services/ - API routes and services.
 ├── types/ - Reusable types.
 ├── utils/ - Utility functions.
-├── **tests**/ - Unit tests.
+├── \_**\_tests\_\_** - Unit tests.
 └── ... Other configuration files like tsconfig.json, .husky, vite.config.mts etc.
 ```
 
@@ -185,6 +181,7 @@ See [LICENSE.MD](./LICENSE).
 - Make the sidebar transition work.
 - Add more tests.
 - Make table header sticky on bike network detail page.
+- Internalization.
 
 ## Final Notes
 
@@ -199,6 +196,6 @@ I’d be happy to walk you through my thought process, implementation choices, a
 
 - [CityBikes API](https://api.citybik.es/v2/) — for the open bike network data.
 - [Shadcn/UI](https://ui.shadcn.com/) — for accessible and extensible UI components.
-- [Vizzuality Front End Challenge](https://github.com/Vizzuality/front-end-code-challenge/tree/master/mid-senior) — for the challenge with a detailed instructions, UI kit and `countries.json` file.
+- [Vizzuality Front End Challenge](https://github.com/Vizzuality/front-end-code-challenge/tree/master/mid-senior) — for the challenge with a detailed instruction, UI kit and `countries.json` file.
 - [Vercel](https://vercel.com/) for the free deployment.
-- The developers of the other packages used [package.json](./package.json).
+- The developers of the other packages used in [package.json](./package.json).

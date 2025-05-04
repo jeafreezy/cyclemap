@@ -20,6 +20,7 @@ import countries from "@/data/countries.json";
 import useQueryParam from "@/hooks/use-query-params";
 import { SEARCH_PARAMS_KEYS } from "@/configs";
 import { TOUR_IDS } from "@/utils/tour-steps";
+import { getCountryNameFromCode } from "@/utils/country-helper";
 
 export const CountryFilter = () => {
   const [open, setOpen] = useState<boolean>(false);
@@ -38,10 +39,7 @@ export const CountryFilter = () => {
         >
           <MapPin className="size-4 text-secondary-foreground" />
           <span className="w-full truncate">
-            {queryParam
-              ? countries.data.find((country) => country.code === queryParam)
-                  ?.name
-              : "Country"}
+            {queryParam ? getCountryNameFromCode(queryParam) : "Country"}
           </span>
         </Button>
       </PopoverTrigger>

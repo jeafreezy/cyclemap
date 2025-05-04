@@ -24,7 +24,7 @@ export const SiteTourWrapper = ({
           ...base,
           "--reactour-accent": "#f0581f", //grenadier-500
           borderRadius: 8,
-          color: "#000",
+          color: "#000", // black
         }),
         maskArea: (base) => ({ ...base, rx: 8 }),
         badge: (base) => ({ ...base, left: "auto", right: "-0.8125em" }),
