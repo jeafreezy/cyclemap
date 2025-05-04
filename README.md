@@ -105,12 +105,14 @@ Here's an overview of the folder structure:
 ├── app/ - Contains the application routes.
 ├── assets/ - Static assets specific to the app (images.).
 ├── components/ - Reusable components and layouts.
-├── config/ - Environment variables configuration.
+├── configs/ - Environment variables configuration.
+├── contexts/ - Holds the application contexts.
+├── data/ - Holds the countries.json file.
 ├── hooks/ - Reusable hooks.
 ├── services/ - API routes and services.
 ├── types/ - Reusable types.
 ├── utils/ - Utility functions.
-├── \_**\_tests\_\_** - Unit tests.
+├── \_\_tests\_\_ - Unit tests.
 └── ... Other configuration files like tsconfig.json, .husky, vite.config.mts etc.
 ```
 

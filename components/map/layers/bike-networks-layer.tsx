@@ -4,7 +4,7 @@ import {
   BIKE_NETWORK_POINTS_LAYER_ID,
   BIKE_NETWORK_POINTS_SOURCE_ID,
 } from "@/configs";
-import { useMap } from "@/context";
+import { useMap } from "@/contexts";
 import { BikeNetworks } from "@/types";
 import { AllGeoJSON } from "@turf/helpers";
 import { GeoJSONSource } from "mapbox-gl";

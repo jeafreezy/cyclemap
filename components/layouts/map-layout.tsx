@@ -4,7 +4,7 @@ import "mapbox-gl/dist/mapbox-gl.css";
 import { useEffect, useRef, useState } from "react";
 import { setupMapboxMap } from "@/components/map/setup-mapbox";
 import { Map } from "mapbox-gl";
-import { MapContext } from "@/context";
+import { MapContext } from "@/contexts";
 import { ZoomControl, GeolocationControl } from "@/components/map/controls";
 
 export const MapLayout = ({ children }: { children: React.ReactNode }) => {

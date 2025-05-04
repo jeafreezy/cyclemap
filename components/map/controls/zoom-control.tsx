@@ -3,7 +3,7 @@
 import { MAX_ZOOM_LEVEL, MIN_ZOOM_LEVEL } from "@/configs";
 import { Plus, Minus } from "lucide-react";
 import { useEffect, useState } from "react";
-import { useMap } from "@/context";
+import { useMap } from "@/contexts";
 import { Button } from "@/components/ui/button";
 import { TOUR_IDS } from "@/utils/tour-steps";
 
