@@ -17,7 +17,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }): Promise<Metadata> {
   try {
     const { id } = await params;
@@ -46,9 +46,9 @@ export async function generateMetadata({
 export default async function BikeNetworkDetailsPage({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
-  const { id } = params;
+  const { id } = await params;
   try {
     const bikeNetworkDetail = await bikeNetworksService.getBikeNetworkById(id);
     return <BikeNetworkDetailPageWrapper bikeNetwork={bikeNetworkDetail} />;
