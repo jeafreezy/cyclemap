@@ -1,6 +1,12 @@
 # 🚴‍♂️ CycleMap – Bike Networks Explorer
 
+
+![Open Graph](./public/og/opengraph-image.png)
+
+
 This React SPA lets users explore bicycle networks worldwide through a rich, accessible, and performant interface, combining server-side rendering, map integration, pagination, and search/filter functionality—all built using modern tooling and best practices.
+
+
 
 ## Table of Contents
 
