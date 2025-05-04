@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { GEOLOCATION_ZOOM_LEVEL } from "@/configs";
-import { useMap } from "@/context";
+import { useMap } from "@/contexts";
 import { TOUR_IDS } from "@/utils/tour-steps";
 import { LocateIcon } from "lucide-react";
 import { toast } from "sonner";

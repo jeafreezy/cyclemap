@@ -5,7 +5,7 @@ import {
   BIKE_NETWORK_STATIONS_SOURCE_ID,
   BIKE_NETWORK_STATIONS_ZOOM_LEVEL,
 } from "@/configs";
-import { useMap } from "@/context";
+import { useMap } from "@/contexts";
 import { Station } from "@/types";
 import {
   GeoJSONSource,
