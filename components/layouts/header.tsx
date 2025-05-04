@@ -12,7 +12,9 @@ export const Header = () => {
           Discover bike networks
         </h1>
         <p className="text-sm leading-5 text-zinc-500 max-w-lg">
-          Explore bike-sharing systems across the world with CycleMap. Find networks by city or country, view their locations on the map, and plan your next ride effortlessly.
+          Explore bike-sharing systems across the world with CycleMap. Find
+          networks by city or country, view their locations on the map, and plan
+          your next ride effortlessly.
         </p>
       </div>
     </header>
