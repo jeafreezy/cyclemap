@@ -7,17 +7,28 @@ import {
 } from "@/configs";
 import { useMap } from "@/context";
 import { Station } from "@/types";
-import { GeoJSONSource, LngLatBoundsLike } from "mapbox-gl";
-import { useEffect, useMemo } from "react";
+import {
+  GeoJSONSource,
+  LngLatBoundsLike,
+  MapMouseEvent,
+  Popup,
+} from "mapbox-gl";
+import { useEffect, useMemo, useRef } from "react";
 import bbox from "@turf/bbox";
 import { AllGeoJSON } from "@turf/helpers";
+import { createRoot } from "react-dom/client";
+import { BikeStationTooltip } from "@/components/map/station-tooltip";
+
 export const BikeNetworkDetailLayer = ({
   stations,
 }: {
   stations: Station[];
 }) => {
   const map = useMap();
-  const bikeNetworkStationsFeatureCollection: AllGeoJSON = useMemo(
+  const popupRef = useRef<HTMLDivElement | null>(null);
+  const popupRoot = useRef<ReturnType<typeof createRoot> | null>(null);
+
+  const featureCollection: AllGeoJSON = useMemo(
     () => ({
       type: "FeatureCollection",
       features: stations.map((station) => ({
@@ -27,7 +38,9 @@ export const BikeNetworkDetailLayer = ({
           type: "Point",
           coordinates: [station.longitude, station.latitude],
         },
-        properties: {},
+        properties: {
+          ...station,
+        },
       })),
     }),
     [stations],
@@ -36,11 +49,22 @@ export const BikeNetworkDetailLayer = ({
   useEffect(() => {
     if (!map) return;
 
+    /**
+     *  Setup the popup container and root.
+     *  This is used to render the tooltip component inside the popup.
+     */
+    const popupContainer = document.createElement("div");
+    popupRef.current = popupContainer;
+    popupRoot.current = createRoot(popupContainer);
+    const popup = new Popup({ closeButton: false }).setDOMContent(
+      popupContainer,
+    );
+
     const handleLoad = () => {
       if (!map.getSource(BIKE_NETWORK_STATIONS_SOURCE_ID)) {
         map.addSource(BIKE_NETWORK_STATIONS_SOURCE_ID, {
           type: "geojson",
-          data: bikeNetworkStationsFeatureCollection,
+          data: featureCollection,
         });
       }
 
@@ -56,12 +80,49 @@ export const BikeNetworkDetailLayer = ({
         });
       }
 
-      const bounds = bbox(bikeNetworkStationsFeatureCollection);
+      const bounds = bbox(featureCollection);
       map.fitBounds(bounds as LngLatBoundsLike, {
         padding: 20,
         maxZoom: GEOLOCATION_ZOOM_LEVEL,
       });
     };
+
+    /**
+     * Add a hover effect to the bike network stations.
+     */
+    map.on("mouseenter", BIKE_NETWORK_STATIONS_LAYER_ID, () => {
+      map.getCanvas().style.cursor = "pointer";
+    });
+
+    map.on("mouseleave", BIKE_NETWORK_STATIONS_LAYER_ID, () => {
+      map.getCanvas().style.cursor = "";
+    });
+
+    /**
+     * Show the popup when the user clicks on a station.
+     */
+    const handlePopupClick = (e: MapMouseEvent) => {
+      const features = map.queryRenderedFeatures(e.point, {
+        layers: [BIKE_NETWORK_STATIONS_LAYER_ID],
+      });
+
+      if (features.length && popupRef.current && popupRoot.current) {
+        const feature = features[0];
+        const station = feature.properties as Station;
+        if (station.latitude && station.longitude) {
+          popup.setLngLat([station.longitude, station.latitude]).addTo(map);
+          popupRoot.current.render(
+            <BikeStationTooltip
+              name={station.name}
+              freeBikes={station.free_bikes}
+              emptySlots={station.empty_slots}
+            />,
+          );
+        }
+      }
+    };
+
+    map.on("click", BIKE_NETWORK_STATIONS_LAYER_ID, handlePopupClick);
 
     if (map.isStyleLoaded()) {
       handleLoad();
@@ -77,17 +138,21 @@ export const BikeNetworkDetailLayer = ({
       if (map.getSource(BIKE_NETWORK_STATIONS_SOURCE_ID)) {
         map.removeSource(BIKE_NETWORK_STATIONS_SOURCE_ID);
       }
+      popup.remove();
+      if (popupRef.current) {
+        popupRef.current.remove();
+      }
+      map.off("click", BIKE_NETWORK_STATIONS_LAYER_ID, handlePopupClick);
     };
-  }, [map, bikeNetworkStationsFeatureCollection]);
+  }, [map, featureCollection]);
 
   useEffect(() => {
     if (!map || !map.getSource(BIKE_NETWORK_STATIONS_SOURCE_ID)) return;
-
     const source = map.getSource(
       BIKE_NETWORK_STATIONS_SOURCE_ID,
     ) as GeoJSONSource;
-    source.setData(bikeNetworkStationsFeatureCollection);
-  }, [map, bikeNetworkStationsFeatureCollection]);
+    source.setData(featureCollection);
+  }, [map, featureCollection]);
 
   return null;
 };

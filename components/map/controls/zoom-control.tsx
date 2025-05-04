@@ -5,6 +5,7 @@ import { Plus, Minus } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useMap } from "@/context";
 import { Button } from "@/components/ui/button";
+import { TOUR_IDS } from "@/utils/tour-steps";
 
 export const ZoomControl = () => {
   const map = useMap();
@@ -35,16 +36,19 @@ export const ZoomControl = () => {
 
   return (
     <div className="absolute top-8 right-6 z-10">
-      <div className="bg-white rounded-full shadow-md flex flex-col items-center w-8 h-16 p-1">
+      <div
+        className="bg-white rounded-full shadow-md flex flex-col items-center w-8 h-16 p-1"
+        id={TOUR_IDS.ZOOM_CONTROL}
+      >
         <ZoomControlButton
           disabled={isZoomInDisabled}
           onClick={handleZoomIn}
-          icon={<Plus className="size-4 " />}
+          icon={<Plus className="size-4" aria-hidden="true" />}
         />
         <ZoomControlButton
           disabled={isZoomOutDisabled}
           onClick={handleZoomOut}
-          icon={<Minus className="size-4" />}
+          icon={<Minus className="size-4" aria-hidden="true" />}
         />
       </div>
     </div>
@@ -67,6 +71,7 @@ const ZoomControlButton = ({
       className={`text-primary w-full flex items-center justify-center hover:text-primary h-full ${disabled ? "opacity-50 cursor-not-allowed" : "cursor-pointer"}`}
       onClick={onClick}
       disabled={disabled}
+      aria-label="Zoom control button"
     >
       {icon}
     </Button>

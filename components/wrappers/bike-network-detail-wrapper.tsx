@@ -11,7 +11,12 @@ export const BikeNetworkDetailPageWrapper = ({
   return (
     <AppLayout
       sidebar={<BikeNetworkDetailSidebar network={bikeNetwork} />}
-      mapLayer={<BikeNetworkDetailLayer stations={bikeNetwork.stations} />}
+      mapLayer={
+        <BikeNetworkDetailLayer
+          stations={bikeNetwork.stations}
+          key="map-network-detail-layer"
+        />
+      }
     />
   );
 };

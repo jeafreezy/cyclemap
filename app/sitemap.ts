@@ -1,10 +1,17 @@
 import { MetadataRoute } from "next";
 import { bikeNetworksService } from "@/services";
 import { APPLICATION_ROUTES } from "@/configs";
+import { BikeNetwork } from "@/types";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const domain = process.env.NEXT_PUBLIC_SITE_URL;
-  const networks = await bikeNetworksService.getBikeNetworks();
+
+  let networks = [] as BikeNetwork[];
+  try {
+    networks = await bikeNetworksService.getBikeNetworks();
+  } catch {
+    networks = [];
+  }
 
   return [
     {

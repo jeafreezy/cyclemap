@@ -13,8 +13,12 @@ export const BikeNetworkCity = ({
   const countryName = useMemo(() => {
     return getCountryNameFromCode(networkLocation.country);
   }, [networkLocation.country]);
+  const fullLocation = `${networkLocation.city}, ${countryName}`;
   return (
-    <div className="flex items-center gap-x-3">
+    <div
+      className="flex items-center gap-x-3"
+      aria-label={`Location: ${fullLocation}`}
+    >
       <div
         className={`flex items-center justify-center size-6 ${!isNetworkDetailPage && "bg-toreabay-50"} rounded-sm`}
       >
@@ -24,8 +28,9 @@ export const BikeNetworkCity = ({
       </div>
       <p
         className={`${isNetworkDetailPage ? "text-toreabay-100 text-base" : "text-muted-foreground truncate text-sm"} leading-7`}
+        title={fullLocation}
       >
-        {networkLocation.city}, {countryName}
+        {fullLocation}
       </p>
     </div>
   );

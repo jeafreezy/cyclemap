@@ -10,10 +10,15 @@ import { useRouter } from "next/navigation";
 export const BikeNetworkHero = ({ network }: { network: BikeNetwork }) => {
   const router = useRouter();
   return (
-    <div className="relative w-full min-h-64 overflow-hidden">
+    <div
+      className="relative w-full min-h-64 overflow-hidden"
+      role="region"
+      aria-label={`Information about ${network.name}`}
+    >
       <Image
         src={BikeNetworkDetailHeroBackgroundImage}
         alt="Bike Network Background"
+        aria-hidden="true"
         className="absolute inset-0 w-full h-full object-cover"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-toreabay-800 via-toreabay-700/60 to-transparent" />
@@ -22,6 +27,7 @@ export const BikeNetworkHero = ({ network }: { network: BikeNetwork }) => {
           variant="ghost"
           size="icon"
           onClick={() => router.back()}
+          aria-label="Go back to previous page"
           className="bg-base-white size-10 rounded-full cursor-pointer hover:bg-base-white p-4"
         >
           <ArrowLeft className="size-4 text-grenadier-400" />

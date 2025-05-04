@@ -15,17 +15,17 @@
    */
 
   /**
-   * Base Starts
+   * Base Starts.
    */
   --base-white: #ffffff;
   --base-black: #000000;
 
   /**
-   * Base Ends
+   * Base Ends.
    */
 
   /**
-   * Torea Bay Starts
+   * Torea Bay Starts.
    */
 
   --toreabay-50: #eff4fe;
@@ -41,11 +41,11 @@
   --toreabay-950: #1e1e48;
 
   /**
-   * Torea Bay Ends
+   * Torea Bay Ends.
    */
 
   /**
-   * Grenadier Start
+   * Grenadier Start.
    */
 
   --grenadier-50: #fef5ee;
@@ -61,11 +61,11 @@
   --grenadier-950: #782116;
 
   /**
-   * Grenadier Ends
+   * Grenadier Ends.
    */
 
   /**
-   * Zinc Start
+   * Zinc Start.
    */
 
   --zinc-50: #fafafa;
@@ -81,7 +81,7 @@
   --zinc-950: #09090b;
 
   /**
-   * Zinc Ends
+   * Zinc Ends.
    */
 
   /**
@@ -160,14 +160,14 @@
 
 @theme inline {
   /**
-   * Base Colors
+   * Base Colors.
    */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-base-white: var(--base-white);
   --color-base-black: var(--base-black);
   /**
-   * Toreabay Colors
+   * Toreabay Colors.
    */
   --color-toreabay-50: var(--toreabay-50);
   --color-toreabay-100: var(--toreabay-100);
@@ -181,7 +181,7 @@
   --color-toreabay-900: var(--toreabay-900);
   --color-toreabay-950: var(--toreabay-950);
   /**
-   * Grenadier Colors
+   * Grenadier Colors.
    */
   --color-grenadier-50: var(--grenadier-50);
   --color-grenadier-100: var(--grenadier-100);
@@ -195,7 +195,7 @@
   --color-grenadier-900: var(--grenadier-900);
   --color-grenadier-950: var(--grenadier-950);
   /**
-   * Zinc Colors
+   * Zinc Colors.
    */
   --color-zinc-50: var(--zinc-50);
   --color-zinc-100: var(--zinc-100);
@@ -329,6 +329,7 @@
   }
 }
 
+/*Utility classes starts. */
 @layer utilities {
   .no-scrollbar::-webkit-scrollbar {
     display: none;
@@ -337,4 +338,13 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
+  .table-cell {
+    @apply block font-bold text-[16px] text-center;
+  }
 }
+/*Utility classes ends. */
+/* Popup customization starts. */
+.mapboxgl-popup-content {
+  @apply !p-0;
+}
+/* Popup customization  ends. */

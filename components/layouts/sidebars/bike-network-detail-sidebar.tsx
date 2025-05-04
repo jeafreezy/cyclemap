@@ -8,6 +8,7 @@ import { motion } from "framer-motion";
 import { usePaginator } from "@/hooks/use-pagination";
 import { Paginator } from "@/components/bike-networks/pagination";
 import useQueryParam from "@/hooks/use-query-params";
+import { TOUR_IDS } from "@/utils/tour-steps";
 
 export function BikeNetworkDetailSidebar({
   network,
@@ -43,18 +44,22 @@ export function BikeNetworkDetailSidebar({
             </span>
             stations
           </div>
-          <BikeNetworkStationsTable stations={paginatedBikeNetworkStations} />
-          {network.stations.length > BIKE_NETWORK_STATIONS_PAGE_SIZE ? (
-            <Paginator
-              totalItems={network.stations.length}
-              itemsPerPage={BIKE_NETWORK_STATIONS_PAGE_SIZE}
-              variant="secondary"
-              currentPage={pageNumber}
-              handlePageChange={(page: number) =>
-                handleParamChange(page.toString())
-              }
-            />
-          ) : null}
+          <div className="overflow-x-auto no-scrollbar">
+            <BikeNetworkStationsTable stations={paginatedBikeNetworkStations} />
+            {network.stations.length > BIKE_NETWORK_STATIONS_PAGE_SIZE ? (
+              <div id={TOUR_IDS.STATIONS_PAGINATOR}>
+                <Paginator
+                  totalItems={network.stations.length}
+                  itemsPerPage={BIKE_NETWORK_STATIONS_PAGE_SIZE}
+                  variant="secondary"
+                  currentPage={pageNumber}
+                  handlePageChange={(page: number) =>
+                    handleParamChange(page.toString())
+                  }
+                />
+              </div>
+            ) : null}
+          </div>
         </section>
       </motion.aside>
     </div>

@@ -4,6 +4,7 @@ import DataTable from "@/components/ui/data-table";
 import { Station } from "@/types";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { TOUR_IDS } from "@/utils/tour-steps";
 
 export const SortableHeader = <TData, TValue>({
   title,
@@ -18,9 +19,11 @@ export const SortableHeader = <TData, TValue>({
       size="sm"
       className="flex items-center gap-x-2 uppercase cursor-pointer hover:bg-transparent hover:text-white"
       onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+      id={TOUR_IDS.TABLE_SORTER}
+      aria-label={`Sort by ${title}`}
     >
       {title}
-      <ArrowUpDown className="size-4" />
+      <ArrowUpDown className="size-4" aria-hidden="true" />
     </Button>
   );
 };
@@ -28,7 +31,7 @@ export const SortableHeader = <TData, TValue>({
 const columnDefinitions = (): ColumnDef<Station>[] => [
   {
     accessorKey: "name",
-    header: "STATION NAME",
+    header: () => <span className="text-nowrap">STATION NAME</span>,
     cell: (row) => {
       return (
         <span className="block transition-transform duration-500 group-hover:translate-x-2 text-base">
@@ -43,11 +46,7 @@ const columnDefinitions = (): ColumnDef<Station>[] => [
       <SortableHeader title={"free bikes"} column={column} />
     ),
     cell: (row) => {
-      return (
-        <span className="block font-bold text-[16px] text-center">
-          {row.getValue() as string}
-        </span>
-      );
+      return <span className="table-cell">{row.getValue() as string}</span>;
     },
   },
 
@@ -57,11 +56,7 @@ const columnDefinitions = (): ColumnDef<Station>[] => [
       <SortableHeader title={"empty slots"} column={column} />
     ),
     cell: (row) => {
-      return (
-        <span className="block text-center text-[16px] font-bold">
-          {row.getValue() as string}
-        </span>
-      );
+      return <span className="table-cell">{row.getValue() as string}</span>;
     },
   },
 ];

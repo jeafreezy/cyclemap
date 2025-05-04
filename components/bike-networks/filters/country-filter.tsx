@@ -19,6 +19,7 @@ import { useState } from "react";
 import countries from "@/data/countries.json";
 import useQueryParam from "@/hooks/use-query-params";
 import { SEARCH_PARAMS_KEYS } from "@/configs";
+import { TOUR_IDS } from "@/utils/tour-steps";
 
 export const CountryFilter = () => {
   const [open, setOpen] = useState<boolean>(false);
@@ -30,6 +31,7 @@ export const CountryFilter = () => {
       <PopoverTrigger asChild>
         <Button
           variant="outline"
+          id={TOUR_IDS.COUNTRY_FILTER}
           role="combobox"
           aria-expanded={open}
           className={`min-w-28 flex gap-x-1 text-primary justify-between rounded-full border-accent ${open && "border-primary"} text-ellipsis overflow-hidden py-6 px-3`}

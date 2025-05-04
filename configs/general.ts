@@ -71,4 +71,10 @@ export const BIKE_NETWORK_STATIONS_PAGE_SIZE = 15;
  */
 export const APPLICATION_ROUTES = {
   NETWORK_DETAILS: (id: string) => `/network/${id}`,
+  NETWORK_DETAIL_BASE: "/network",
 };
+
+/**
+ * The local storage key for the tour dialog.
+ */
+export const SITE_TOUR_LOCAL_STORAGE_KEY = "tourDismissed";
