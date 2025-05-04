@@ -1,0 +1,350 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@custom-variant dark (&:is(.dark *));
+
+/** 
+ * This file contains the global styles and design system for the application.
+ * Retrieved from: https://www.figma.com/design/0MNqMneHvxahQZ6pknjzlq/Frontend-Challenge?node-id=5130-13077&t=Uv4bnPC1XKavdzoL-0.
+ * and shadcn/ui.
+ * Last updated: 2025-05-02.
+*/
+
+:root {
+  /**
+   * ================== Colors ==================
+   */
+
+  /**
+   * Base Starts.
+   */
+  --base-white: #ffffff;
+  --base-black: #000000;
+
+  /**
+   * Base Ends.
+   */
+
+  /**
+   * Torea Bay Starts.
+   */
+
+  --toreabay-50: #eff4fe;
+  --toreabay-100: #e2eafd;
+  --toreabay-200: #cad7fb;
+  --toreabay-300: #abbdf6;
+  --toreabay-400: #8998f0;
+  --toreabay-500: #6c77e8;
+  --toreabay-600: #5050db;
+  --toreabay-700: #4341c1;
+  --toreabay-800: #363698;
+  --toreabay-900: #33347c;
+  --toreabay-950: #1e1e48;
+
+  /**
+   * Torea Bay Ends.
+   */
+
+  /**
+   * Grenadier Start.
+   */
+
+  --grenadier-50: #fef5ee;
+  --grenadier-100: #fde8d7;
+  --grenadier-200: #faccae;
+  --grenadier-300: #f7a97a;
+  --grenadier-400: #f37b44;
+  --grenadier-500: #f0581f;
+  --grenadier-600: #de3e15;
+  --grenadier-700: #ba2d14;
+  --grenadier-800: #ba2d14;
+  --grenadier-900: #942618;
+  --grenadier-950: #782116;
+
+  /**
+   * Grenadier Ends.
+   */
+
+  /**
+   * Zinc Start.
+   */
+
+  --zinc-50: #fafafa;
+  --zinc-100: #f4f4f5;
+  --zinc-200: #e4e4e7;
+  --zinc-300: #d4d4d8;
+  --zinc-400: #a1a1aa;
+  --zinc-500: #71717a;
+  --zinc-600: #52525b;
+  --zinc-700: #3f3f46;
+  --zinc-800: #27272a;
+  --zinc-900: #18181b;
+  --zinc-950: #09090b;
+
+  /**
+   * Zinc Ends.
+   */
+
+  /**
+   * Shadcn UI Design Tokens Start.
+   * https://ui.shadcn.com/docs/theming.
+   */
+
+  --radius: 0.625rem;
+
+  --background: oklch(1 0 0);
+
+  /* --foreground: oklch(0.145 0 0); */
+
+  --card: oklch(1 0 0);
+
+  --card-foreground: oklch(0.145 0 0);
+
+  --popover: oklch(1 0 0);
+
+  --popover-foreground: oklch(0.145 0 0);
+
+  /* --primary: oklch(0.205 0 0); */
+
+  --primary-foreground: oklch(0.985 0 0);
+
+  --secondary: oklch(0.97 0 0);
+
+  /* --secondary-foreground: oklch(0.205 0 0); */
+
+  --muted: oklch(0.97 0 0);
+
+  --muted-foreground: oklch(0.556 0 0);
+
+  /* --accent: oklch(0.97 0 0); */
+
+  --accent-foreground: oklch(0.205 0 0);
+
+  --destructive: oklch(0.577 0.245 27.325);
+
+  --border: oklch(0.922 0 0);
+
+  --input: oklch(0.922 0 0);
+
+  --ring: oklch(0.708 0 0);
+
+  --chart-1: oklch(0.646 0.222 41.116);
+
+  --chart-2: oklch(0.6 0.118 184.704);
+
+  --chart-3: oklch(0.398 0.07 227.392);
+
+  --chart-4: oklch(0.828 0.189 84.429);
+
+  --chart-5: oklch(0.769 0.188 70.08);
+
+  --sidebar: oklch(0.985 0 0);
+
+  --sidebar-foreground: oklch(0.145 0 0);
+
+  --sidebar-primary: oklch(0.205 0 0);
+
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+
+  --sidebar-accent: oklch(0.97 0 0);
+
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+
+  --sidebar-border: oklch(0.922 0 0);
+
+  --sidebar-ring: oklch(0.708 0 0);
+
+  /**
+    * Shadcn UI Design Tokens Ends.
+   */
+}
+
+@theme inline {
+  /**
+   * Base Colors.
+   */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-base-white: var(--base-white);
+  --color-base-black: var(--base-black);
+  /**
+   * Toreabay Colors.
+   */
+  --color-toreabay-50: var(--toreabay-50);
+  --color-toreabay-100: var(--toreabay-100);
+  --color-toreabay-200: var(--toreabay-200);
+  --color-toreabay-300: var(--toreabay-300);
+  --color-toreabay-400: var(--toreabay-400);
+  --color-toreabay-500: var(--toreabay-500);
+  --color-toreabay-600: var(--toreabay-600);
+  --color-toreabay-700: var(--toreabay-700);
+  --color-toreabay-800: var(--toreabay-800);
+  --color-toreabay-900: var(--toreabay-900);
+  --color-toreabay-950: var(--toreabay-950);
+  /**
+   * Grenadier Colors.
+   */
+  --color-grenadier-50: var(--grenadier-50);
+  --color-grenadier-100: var(--grenadier-100);
+  --color-grenadier-200: var(--grenadier-200);
+  --color-grenadier-300: var(--grenadier-300);
+  --color-grenadier-400: var(--grenadier-400);
+  --color-grenadier-500: var(--grenadier-500);
+  --color-grenadier-600: var(--grenadier-600);
+  --color-grenadier-700: var(--grenadier-700);
+  --color-grenadier-800: var(--grenadier-800);
+  --color-grenadier-900: var(--grenadier-900);
+  --color-grenadier-950: var(--grenadier-950);
+  /**
+   * Zinc Colors.
+   */
+  --color-zinc-50: var(--zinc-50);
+  --color-zinc-100: var(--zinc-100);
+  --color-zinc-200: var(--zinc-200);
+  --color-zinc-300: var(--zinc-300);
+  --color-zinc-400: var(--zinc-400);
+  --color-zinc-500: var(--zinc-500);
+  --color-zinc-600: var(--zinc-600);
+  --color-zinc-700: var(--zinc-700);
+  --color-zinc-800: var(--zinc-800);
+  --color-zinc-900: var(--zinc-900);
+  --color-zinc-950: var(--zinc-950);
+
+  /**
+   * Shadcn UI Design Tokens Start.
+   */
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+
+  /*
+    * Modified to use Torea Bay 950 as accent color.
+    * This is in accordance with our design system. 
+   */
+  --color-foreground: var(--toreabay-950);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  /*
+    * Modified to use Torea Bay 800 as primary color.
+    * This is in accordance with our design system. 
+   */
+  --color-primary: var(--toreabay-800);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  /*
+    * Modified to use Torea Bay 800 as secondary foreground color.
+    * This is in accordance with our design system. 
+   */
+  --color-secondary-foreground: var(--toreabay-800);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  /*
+    * Modified to use Torea Bay 100 as accent color.
+    * This is in accordance with our design system. 
+   */
+  --color-accent: var(--toreabay-100);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /**
+   * Shadcn UI Design Tokens Ends.
+   */
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  /*
+    * Modified to use Torea Bay 950 as accent color.
+    * This is in accordance with our design system. 
+   */
+  --foreground: var(--toreabay-950);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  /*
+    * Modified to use Torea Bay 800 as primary color.
+    * This is in accordance with our design system. 
+   */
+  --primary: var(--toreabay-800);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  /*
+    * Modified to use Torea Bay 800 as secondary foreground color.
+    * This is in accordance with our design system. 
+   */
+  --secondary-foreground: var(--toreabay-800);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  /*
+    * Modified to use Torea Bay 100 as accent color.
+    * This is in accordance with our design system. 
+   */
+  --accent: var(--toreabay-100);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/*Utility classes starts. */
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .table-cell {
+    @apply block font-bold text-[16px] text-center;
+  }
+}
+/*Utility classes ends. */
+/* Popup customization starts. */
+.mapboxgl-popup-content {
+  @apply !p-0;
+}
+/* Popup customization  ends. */
