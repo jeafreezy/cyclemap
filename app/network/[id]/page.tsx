@@ -6,8 +6,6 @@ import { APPLICATION_ROUTES } from "@/configs";
 import { Suspense } from "react";
 import { SuspenseFallback } from "@/components/suspense-fallback";
 
-
-
 export async function generateMetadata({
   params,
 }: {
