@@ -24,10 +24,10 @@ export const BikeNetworksSidebar = ({
   );
   const pageNumber = parseInt(page) || 1;
   return (
-    <div className="h-full flex flex-col overflow-y-auto no-scrollbar relative">
+    <div className="h-full flex flex-col overflow-y-auto no-scrollbar relative w-full">
       <div className="p-6">
         <Header />
-        <div className="flex gap-x-2 sticky top-0 bg-base-white py-4 z-10">
+        <div className="flex gap-2 sticky top-0 bg-base-white py-4 z-10 flex-wrap md:flex-nowrap">
           <SearchBarFilter />
           <CountryFilter />
         </div>

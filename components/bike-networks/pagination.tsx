@@ -37,7 +37,7 @@ export const Paginator = ({
 
   return (
     <Pagination className="flex items-center justify-center my-10">
-      <PaginationContent>
+      <PaginationContent className="flex-wrap">
         <PaginationItem>
           <PaginationPrevious
             onClick={(e) => {

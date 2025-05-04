@@ -32,7 +32,7 @@ export const AppLayout = ({
       <div className="font-[family-name:var(--font-poppins)] h-screen bg-background ">
         <main className="flex flex-col md:flex-row min-h-screen  md:h-full w-full">
           {/* Sidebar */}
-          <aside className="w-full md:w-1/2 xl:w-1/3 h-[80vh] md:h-full">
+          <aside className="w-full md:w-1/2 xl:w-1/3 h-screen md:h-full">
             {sidebar}
           </aside>
           {/* Map */}

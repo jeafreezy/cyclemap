@@ -37,7 +37,7 @@ export const BikeNetworkCompany = ({
       ) : isNetworkDetailPage ? (
         <span className="text-base text-toreabay-100">{fullCompanyList}</span>
       ) : (
-        <div className="flex items-center text-sm text-muted-foreground leading-6">
+        <div className="flex items-center text-sm text-muted-foreground leading-6 flex-wrap">
           <span
             className="truncate inline-block min-w-0 max-w-[150px]"
             title={fullCompanyList}
