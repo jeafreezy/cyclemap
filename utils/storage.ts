@@ -4,6 +4,7 @@
  * @returns The value associated with the key, or undefined if not found.
  */
 export const getLocalStorageValue = (key: string): string | undefined => {
+  if (typeof window === "undefined") return undefined;
   try {
     const item = localStorage.getItem(key);
     return item ? item : undefined;
@@ -19,6 +20,7 @@ export const getLocalStorageValue = (key: string): string | undefined => {
  * @param value - The value to associate with the key.
  */
 export const setLocalStorageValue = (key: string, value: string): void => {
+  if (typeof window === "undefined") return;
   try {
     localStorage.setItem(key, value);
   } catch (error) {
