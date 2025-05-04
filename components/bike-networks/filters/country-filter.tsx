@@ -40,7 +40,7 @@ export const CountryFilter = () => {
           <span className="w-full truncate">
             {queryParam
               ? countries.data.find((country) => country.code === queryParam)
-                ?.name
+                  ?.name
               : "Country"}
           </span>
         </Button>

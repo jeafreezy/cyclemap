@@ -17,7 +17,7 @@ export const SearchBarFilter = () => {
       <label htmlFor="search" className="sr-only">
         Search bike networks
       </label>
-      <Search className="size-6 font-thin stroke-[1px]" aria-hidden="true" />
+      <Search className="size-6 shrink-0 font-thin stroke-[1px]" aria-hidden="true" />
       <input
         id="search"
         type="text"
