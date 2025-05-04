@@ -1,5 +1,5 @@
 import { usePathname, useSearchParams } from "next/navigation";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 /**
  * Custom hook to manage query parameters in the URL.
@@ -10,10 +10,8 @@ import { useCallback, useState } from "react";
 export const useQueryParam = (key: string, debounce: boolean = false) => {
   const searchParams = useSearchParams();
   const pathname = usePathname();
-
-  const [queryParam, setQueryParam] = useState<string>(
-    searchParams.get(key) || "",
-  );
+  const [queryParam, setQueryParam] = useState(searchParams.get(key) || "");
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const updateQueryString = useCallback(
     (key: string, value: string) => {
@@ -24,24 +22,24 @@ export const useQueryParam = (key: string, debounce: boolean = false) => {
     [searchParams],
   );
 
-  const handleParamChange = useCallback(
-    (value: string) => {
-      setQueryParam(value);
-      const queryString = updateQueryString(key, value);
-      if (debounce) {
-        /**
-         * Debounce the URL update to avoid too many updates in a short time.
-         */
-        setTimeout(() => {
-          window.history.replaceState(null, "", pathname + "?" + queryString);
-        }, 500);
-        return;
-      } else {
-        window.history.replaceState(null, "", pathname + "?" + queryString);
-      }
-    },
-    [updateQueryString, pathname, key, debounce],
-  );
+  useEffect(() => {
+    if (!debounce) {
+      const queryString = updateQueryString(key, queryParam);
+      window.history.replaceState(null, "", pathname + "?" + queryString);
+      return;
+    }
+
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    timeoutRef.current = setTimeout(() => {
+      const queryString = updateQueryString(key, queryParam);
+      window.history.replaceState(null, "", pathname + "?" + queryString);
+    }, 500);
+  }, [queryParam, debounce, key, pathname, updateQueryString]);
+
+  const handleParamChange = useCallback((value: string) => {
+    setQueryParam(value);
+  }, []);
+
 
   return { queryParam, handleParamChange };
 };
