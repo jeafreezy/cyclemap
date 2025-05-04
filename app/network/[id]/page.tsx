@@ -3,7 +3,8 @@ import { bikeNetworksService } from "@/services";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import { APPLICATION_ROUTES } from "@/configs";
-
+import { Suspense } from "react";
+import { SuspenseFallback } from "@/components/suspense-fallback";
 /**
  * Revalidation for ISR.
  */
@@ -51,7 +52,12 @@ export default async function BikeNetworkDetailsPage({
   const { id } = await params;
   try {
     const bikeNetworkDetail = await bikeNetworksService.getBikeNetworkById(id);
-    return <BikeNetworkDetailPageWrapper bikeNetwork={bikeNetworkDetail} />;
+
+    return (
+      <Suspense fallback={<SuspenseFallback />}>
+        <BikeNetworkDetailPageWrapper bikeNetwork={bikeNetworkDetail} />
+      </Suspense>
+    );
   } catch {
     notFound();
   }

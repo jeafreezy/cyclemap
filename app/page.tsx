@@ -13,6 +13,6 @@ export default async function BikeNetworksPage() {
   } catch {
     <Suspense fallback={<SuspenseFallback />}>
       return <BikeNetworksPageWrapper bikeNetworks={[]} hasError={true} />;
-    </Suspense>
+    </Suspense>;
   }
 }

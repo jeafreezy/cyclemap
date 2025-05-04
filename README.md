@@ -9,17 +9,16 @@ This React SPA lets users explore bicycle networks worldwide through a rich, acc
 - Deployed App: https://cyclemap-omega.vercel.app
 - Repository: https://github.com/jeafreezy/cyclemap
 
+# Todo
 
-
-# Todo 
 - More tests.
 - Move tests to deployment pipeline - currently in husky.
 - Sticky table header on bike network detail page.
 - More tests.
 - Enter and exit animation to and fro bike network details page.
 
-
 ### Acknowldgement
+
 - Shadcn.
 - Vizzuality.
 
