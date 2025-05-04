@@ -15,7 +15,7 @@ This React SPA lets users explore bicycle networks worldwide through a rich, acc
 
 ## Links
 
-- Deployed App: https://cyclemap-omega.vercel.app.
+- Deployed App: https://cyclemap-delta.vercel.app.
 - Repository: https://github.com/jeafreezy/cyclemap.
 
 ## Features
@@ -78,7 +78,7 @@ Site tour powered by `reactour`, with:
 All interactive elements have:
 
 - aria-labels.
-`shadcn/ui` is built on radix primitives (a11y friendly).
+  `shadcn/ui` is built on radix primitives (a11y friendly).
 
 ## Tech Stack
 
@@ -124,7 +124,6 @@ Here's an overview of the folder structure:
 
 Note: [pnpm](http://pnpm.io/) is used as a package manager. You can use `npm`, `yarn` etc.
 
-
 ```bash
 # Clone the repo
 git clone https://github.com/jeafreezy/cyclemap.git
@@ -146,9 +145,7 @@ pnpm dev
 
 Open http://localhost:3000 in your browser.
 
-
-
-## Code Quality
+### Code Quality
 
 This project includes strict formatting and linting enforcement via Prettier, ESLint, and Husky.
 
@@ -160,7 +157,7 @@ This project includes strict formatting and linting enforcement via Prettier, ES
 
 - **Husky** – Runs pre-commit checks (lint, tests & format) before each commit (tests are added because it's a few. Ideally this should be moved to the CI/CD pipeline).
 
-### Linting & Formatting Commands
+### Linting, Test & Formatting Commands
 
 ```
 # Run eslint
@@ -169,7 +166,7 @@ pnpm lint
 # Run prettier
 pnpm format
 
-# Fix both lint and format issues
+# Run unit tests
 pnpm test
 ```
 
@@ -185,7 +182,7 @@ See [LICENSE.MD](./LICENSE).
 
 ## Final Notes
 
-This is my submission for the Frontend Code Challenge at Vizzuality.
+This is my submission for the [Frontend Code Challenge](https://github.com/Vizzuality/front-end-code-challenge/tree/master/mid-senior) at Vizzuality.
 Thank you for the opportunity!
 
 I approached this challenge as I would a production-grade application, prioritizing clean architecture, scalability, accessibility (a11y), and user experience.
@@ -197,4 +194,5 @@ I’d be happy to walk you through my thought process, implementation choices, a
 - [CityBikes API](https://api.citybik.es/v2/) — for the open bike network data.
 - [Shadcn/UI](https://ui.shadcn.com/) — for accessible and extensible UI components.
 - [Vizzuality Front End Challenge](https://github.com/Vizzuality/front-end-code-challenge/tree/master/mid-senior) — for the challenge with a detailed instructions, UI kit and `countries.json` file.
-- other packages used [package.json](./package.json).
+- [Vercel](https://vercel.com/) for the free deployment.
+- The developers of the other packages used [package.json](./package.json).
