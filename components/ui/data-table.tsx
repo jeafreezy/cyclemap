@@ -60,9 +60,9 @@ const DataTable = <TData, TValue>({
                   {header.isPlaceholder
                     ? null
                     : flexRender(
-                        header.column.columnDef.header,
-                        header.getContext(),
-                      )}
+                      header.column.columnDef.header,
+                      header.getContext(),
+                    )}
                 </TableHead>
               );
             })}
@@ -88,7 +88,7 @@ const DataTable = <TData, TValue>({
         ) : (
           <TableRow>
             <TableCell colSpan={columns.length} className="h-24 text-center">
-              No results.
+              No bike stations.
             </TableCell>
           </TableRow>
         )}
