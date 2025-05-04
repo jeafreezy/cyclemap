@@ -75,7 +75,7 @@ export const BikeNetworkDetailLayer = ({
           source: BIKE_NETWORK_STATIONS_SOURCE_ID,
           paint: {
             "circle-radius": 7,
-            "circle-color": "#f37b44", // --grenadier-400 
+            "circle-color": "#f37b44", // --grenadier-400
           },
         });
       }

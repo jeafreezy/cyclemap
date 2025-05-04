@@ -39,9 +39,7 @@ export const CountryFilter = () => {
         >
           <MapPin className="size-4 text-secondary-foreground" />
           <span className="w-full truncate">
-            {queryParam
-              ? getCountryNameFromCode(queryParam)
-              : "Country"}
+            {queryParam ? getCountryNameFromCode(queryParam) : "Country"}
           </span>
         </Button>
       </PopoverTrigger>
