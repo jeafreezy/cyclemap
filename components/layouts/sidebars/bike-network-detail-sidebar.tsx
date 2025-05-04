@@ -36,7 +36,7 @@ export function BikeNetworkDetailSidebar({
         transition={{ type: "tween", duration: 0.4 }}
       >
         <BikeNetworkHero network={network} />
-        <section className="px-10 flex flex-col space-y-3">
+        <section className="px-4 md:px-10 flex flex-col space-y-3">
           <div className="text-sm flex items-center gap-x-2 text-base-white">
             All
             <span className="text-grenadier-400 border border-grenadier-400 px-1.5 py-1 inline-flex items-center justify-center rounded whitespace-nowrap">

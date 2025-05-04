@@ -11,7 +11,7 @@ export const BikeNetworkHero = ({ network }: { network: BikeNetwork }) => {
   const router = useRouter();
   return (
     <div
-      className="relative w-full min-h-64 overflow-hidden"
+      className="relative w-full min-h-72 overflow-hidden"
       role="region"
       aria-label={`Information about ${network.name}`}
     >
@@ -22,7 +22,7 @@ export const BikeNetworkHero = ({ network }: { network: BikeNetwork }) => {
         className="absolute inset-0 w-full h-full object-cover"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-toreabay-800 via-toreabay-700/60 to-transparent" />
-      <div className="relative z-10 h-full flex flex-col justify-between px-10 py-8 gap-y-10">
+      <div className="relative z-10 h-full flex flex-col justify-between px-4 md:px-10 py-8 gap-y-10">
         <Button
           variant="ghost"
           size="icon"

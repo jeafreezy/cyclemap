@@ -37,7 +37,7 @@ export const Paginator = ({
 
   return (
     <Pagination className="flex items-center justify-center my-10">
-      <PaginationContent>
+      <PaginationContent className="flex-wrap">
         <PaginationItem>
           <PaginationPrevious
             onClick={(e) => {
@@ -56,12 +56,11 @@ export const Paginator = ({
               isActive={page === currentPageNumber}
               className={`
                 cursor-pointer font-semibold
-                ${
-                  page === currentPageNumber
-                    ? "bg-accent border-toreabay-200 text-primary hover:text-primary"
-                    : variant === "secondary"
-                      ? "text-base-white hover:text-primary"
-                      : "text-primary hover:text-primary"
+                ${page === currentPageNumber
+                  ? "bg-accent border-toreabay-200 text-primary hover:text-primary"
+                  : variant === "secondary"
+                    ? "text-base-white hover:text-primary"
+                    : "text-primary hover:text-primary"
                 }
               `}
               onClick={(e) => {

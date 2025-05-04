@@ -19,14 +19,12 @@ export const BikeNetworkCompany = ({
       aria-label={`Company: ${fullCompanyList || "No companies available"}`}
     >
       <div
-        className={`flex items-center justify-center w-6 h-6 shrink-0 rounded-sm ${
-          !isNetworkDetailPage && "bg-toreabay-50"
-        }`}
+        className={`flex items-center justify-center w-6 h-6 shrink-0 rounded-sm ${!isNetworkDetailPage && "bg-toreabay-50"
+          }`}
       >
         <BriefcaseBusiness
-          className={`size-4 ${
-            !isNetworkDetailPage ? "text-grenadier-400" : "text-toreabay-100"
-          }`}
+          className={`size-4 ${!isNetworkDetailPage ? "text-grenadier-400" : "text-toreabay-100"
+            }`}
         />
       </div>
 
@@ -37,7 +35,7 @@ export const BikeNetworkCompany = ({
       ) : isNetworkDetailPage ? (
         <span className="text-base text-toreabay-100">{fullCompanyList}</span>
       ) : (
-        <div className="flex items-center text-sm text-muted-foreground leading-6">
+        <div className="flex items-center text-sm text-muted-foreground leading-6 flex-wrap">
           <span
             className="truncate inline-block min-w-0 max-w-[150px]"
             title={fullCompanyList}
