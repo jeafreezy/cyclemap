@@ -40,7 +40,6 @@ export const useQueryParam = (key: string, debounce: boolean = false) => {
     setQueryParam(value);
   }, []);
 
-
   return { queryParam, handleParamChange };
 };
 
