@@ -25,7 +25,7 @@ export const SearchBarFilter = () => {
         id="search"
         type="text"
         value={queryParam}
-        placeholder="Search network"
+        placeholder="Search network by name or country"
         onChange={(e) => handleParamChange(e.target.value)}
         className="flex-1 ml-2 p-1 text-sm placeholder:text-primary outline-none"
       />
