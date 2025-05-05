@@ -154,15 +154,13 @@ This project includes strict formatting, consistent naming conventions, absolute
 
 - **Absolute imports** - We use absolute imports (such as `@/components`, `@/hooks`, etc.), to make it easier to move files around and avoid messy import paths such as `../../../component`.
 
-
-- **File naming conventions**  - We use the `kebab-case` to name all files. This helps to keep your codebase consistent and easier to navigate.
+- **File naming conventions** - We use the `kebab-case` to name all files. This helps to keep your codebase consistent and easier to navigate.
 
 - **ESLint** – Lints the code for issues.
 
 - **Prettier** – Formats the code consistently.
 
 - **Husky** – Runs pre-commit checks (lint, tests & format) before each commit (tests are added because it's a few. Ideally this should be moved to the CI/CD pipeline).
-
 
 ### Linting, Test & Formatting Commands
 

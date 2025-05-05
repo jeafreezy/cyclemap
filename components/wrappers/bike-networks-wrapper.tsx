@@ -8,6 +8,7 @@ import { AppLayout } from "@/components/layouts/app-layout";
 import { BikeNetworksLayer } from "@/components/map/layers/bike-networks-layer";
 import { usePaginator } from "@/hooks/use-pagination";
 import { ErrorFallbackDialog } from "@/components/dialogs/error-fallback-dialog";
+import { getCountryNameFromCode } from "@/utils/country-helper";
 
 export const BikeNetworksPageWrapper = ({
   bikeNetworks,
@@ -24,25 +25,21 @@ export const BikeNetworksPageWrapper = ({
 
   const filteredBikeNetworks = useMemo(() => {
     return bikeNetworks.filter((network) => {
-      if (searchQuery && country) {
-        return (
-          (network.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-            network.company.some((company) =>
-              company.toLowerCase().includes(searchQuery.toLowerCase()),
-            )) &&
-          network.location.country.toLowerCase() === country.toLowerCase()
-        );
-      } else if (searchQuery) {
-        return (
-          network.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          network.company.some((company) =>
-            company.toLowerCase().includes(searchQuery.toLowerCase()),
-          )
-        );
-      } else if (country) {
-        return network.location.country.toLowerCase() === country.toLowerCase();
-      }
-      return true;
+      const lowerSearch = searchQuery?.toLowerCase() || "";
+      const lowerCountry = country?.toLowerCase();
+
+      const countryName = getCountryNameFromCode(network.location.country).toLowerCase();
+
+      const matchesSearch =
+        network.name.toLowerCase().includes(lowerSearch) ||
+        network.company.some((company) => company.toLowerCase().includes(lowerSearch)) ||
+        countryName.includes(lowerSearch);
+
+      const matchesCountry = lowerCountry
+        ? network.location.country.toLowerCase() === lowerCountry
+        : true;
+
+      return matchesSearch && matchesCountry;
     });
   }, [bikeNetworks, searchQuery, country]);
 
