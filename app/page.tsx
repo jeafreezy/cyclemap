@@ -11,8 +11,10 @@ export default async function BikeNetworksPage() {
       </Suspense>
     );
   } catch {
-    <Suspense fallback={<SuspenseFallback />}>
-      return <BikeNetworksPageWrapper bikeNetworks={[]} hasError={true} />;
-    </Suspense>;
+    return (
+      <Suspense fallback={<SuspenseFallback />}>
+        <BikeNetworksPageWrapper bikeNetworks={[]} hasError={true} />;
+      </Suspense>
+    );
   }
 }
