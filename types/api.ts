@@ -38,12 +38,7 @@ export type Station = {
 export type BikeNetworkDetail = {
   id: string;
   name: string;
-  location: {
-    latitude: number;
-    longitude: number;
-    city: string;
-    country: string;
-  };
+  location: BikeNetworkLocation;
   href: string;
   company: string[];
   system?: string;
